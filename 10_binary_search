@@ -1,0 +1,19 @@
+def binarysearch(first,last,target):
+    for i in range(first,last):    
+        mid = (first + last)//2
+        if array[mid] == target:
+            return mid
+        elif (target < array[mid]):
+            last = mid - 1 
+            binarysearch(first,last,target)
+        elif (target > array[mid]):
+            first = mid + 1
+            binarysearch(first,last,target)
+
+array = [1,2,4,5,7]
+target = 5
+first = 0
+last = len(array)-1
+index = binarysearch(first,last,target)
+print("The target is at index: ", index)
+    
