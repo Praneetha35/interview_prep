@@ -1,0 +1,15 @@
+def chessboard(n):
+    chessboard = []
+    for i in range(n):
+        row = []
+        for j in range(n):
+            if ( i + j ) % 2 == 0:
+                row.append("W")
+            else:
+                row.append("B")
+        chessboard.append(row)
+    for row in chessboard:
+        print(' '.join(row))
+
+n = 4
+chessboard(n)
