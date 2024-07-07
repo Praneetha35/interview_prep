@@ -1,0 +1,13 @@
+def frequency(array):
+    freq = {}
+    for i in array:
+        if i in freq:
+            freq[i] += 1
+        else:
+            freq[i] = 1
+    return max(freq, key=freq.get)
+    
+
+array = [1,2,2,4,4,4,5]
+most_freq = frequency(array)
+print("Most frequent element in the array or mode: ",most_freq)
