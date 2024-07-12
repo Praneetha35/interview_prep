@@ -1,0 +1,15 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        hashMap = {"(":")", "{" : "}", "[" : "]"}
+        stack = []
+        for i in s:
+            if i in hashMap:
+                stack.append(i)
+            elif len(stack) == 0 or hashMap[stack.pop()] != i:
+                return False
+        return len(stack) == 0
+
+            
+
+
+        
