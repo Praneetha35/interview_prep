@@ -1,0 +1,19 @@
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        # Ensure k is within the bounds of the array length
+        k = k % len(nums)
+        
+        # Get the last k elements and the first part of the array
+        last_k_elements = nums[-k:]
+        first_part = nums[:-k]
+        
+        # Combine the two parts
+        rotated_array = last_k_elements + first_part
+        
+        # Modify the nums array in-place
+        for i in range(len(nums)):
+            nums[i] = rotated_array[i]
+        
