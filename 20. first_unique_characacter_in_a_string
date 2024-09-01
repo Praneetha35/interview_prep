@@ -1,0 +1,22 @@
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        hashmap = {}
+        for i in range(len(s)):
+            if s[i] not in hashmap:
+                hashmap[s[i]] = [i,1]
+            else:
+                hashmap[s[i]][1] += 1
+        
+        for key,value in hashmap.items():
+            if value[1] == 1:
+                return value[0]
+        return -1
+
+
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        for i,c in enumerate(s):
+            if s.count(c)==1:
+                return i
+                break
+        return -1
