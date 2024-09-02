@@ -1,0 +1,25 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        anagram_map = {}
+        result = []
+        
+        for s in strs:
+            sorted_word = ''.join(sorted(s))
+            if sorted_word in anagram_map:
+                anagram_map[sorted_word].append(s)
+            else:
+                anagram_map[sorted_word] = [s]
+
+        for word in anagram_map:
+            result.append(anagram_map[word])
+
+        return result
+
+        # Time complexity - O(n * k * log k) 
+        # n = the number of words in strs array
+        # k * log k = the sorting time of Timsort in-built function
+        
+        # Space complexity - O(n * k), 
+        # n is the number of strings
+        # k is the average length of the strings.
+
