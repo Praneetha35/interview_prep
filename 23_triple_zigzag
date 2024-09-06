@@ -1,0 +1,10 @@
+def solution(numbers):
+    result = []
+    for i in range(0, len(numbers)-2):
+        if ( (numbers[i] < numbers[i+1] > numbers[i+2]) |  (numbers[i] > numbers[i+1] < numbers[i+2])):
+            result.append(1)
+        else:
+            result.append(0)       
+    return result
+
+https://leetcode.com/discuss/interview-question/2083403/triple-zigzag - Question
