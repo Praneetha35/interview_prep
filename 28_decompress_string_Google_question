@@ -1,0 +1,35 @@
+def decompressString(s):
+    # Initialize a stack to store previous strings and numbers for repetitions
+    stack = []
+    # currentString accumulates the current segment of decompressed string
+    currentString = ""
+    # currentNum accumulates digits to form the repetition count
+    currentNum = 0
+    
+    for char in s:
+        # If the character is a digit, build the number for repetitions
+        if char.isdigit():
+            currentNum = currentNum * 10 + int(char)
+        elif char == "[":
+            # When encountering '[', push the current string and number onto the stack
+            # This saves the state for when this nested repetition is done
+            stack.append((currentString, currentNum))
+            # Reset currentString and currentNum for the new segment inside the brackets
+            currentString = ""
+            currentNum = 0 
+        elif char == "]":
+            # When encountering ']', pop the last saved string and number from the stack
+            lastString, num = stack.pop()
+            # Repeat the currentString num times and concatenate it to lastString
+            # This gives the decompressed result for this bracketed segment
+            currentString = lastString + currentString * num
+        else:
+            # For regular characters, just accumulate them in currentString
+            currentString += char
+            
+    # Return the fully decompressed string after processing all characters
+    return currentString
+    
+# Testing the function with given examples
+print("3[abc]4[ab]c:", decompressString("3[abc]4[ab]c"))  # Expected output: "abcabcabcababababc"
+print("2[3[a]b]:", decompressString("2[3[a]b]"))          # Expected output: "aaabaaab"
