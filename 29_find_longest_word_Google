@@ -1,0 +1,21 @@
+def subsequence(word,S):
+    i,j = 0,0
+    while i < len(word) and j < len(S):
+        if word[i] == S[j]:
+            i+=1
+        j+=1 
+    return i == len(word)
+    
+def find_longest_word(S,D):
+    hashmap = {}
+    for word in D:
+        if subsequence(word,S):
+            hashmap[len(word)] = word
+    longest = hashmap[max(hashmap)]
+    print(longest)
+    
+
+find_longest_word("abppplee",{"able", "ale", "apple", "bale", "kangaroo"})
+
+
+https://techdevguide.withgoogle.com/resources/former-interview-question-find-longest-word/#!
