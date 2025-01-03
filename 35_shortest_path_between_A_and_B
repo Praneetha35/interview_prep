@@ -1,0 +1,19 @@
+from queue import deque: 
+class Solution:
+    def bfs(self,graph,A,B):
+        queue = deque([(A,0)])
+        visited = set([(A)])
+        
+        while queue:
+            curr_node, distance = queue.popleft()
+            
+            if curr_node == B:
+                return distance
+            
+            for neighbor in graph[curr_node]:
+                if neighbor not in visted:
+                    queue.append((neighbor,distance+1))
+                    visited.add(neighbor)
+        return -1
+            
+            
