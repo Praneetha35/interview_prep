@@ -1,0 +1,28 @@
+from queue import deque
+class Solution:
+    def min_moves(self,x,y):
+        x,y = abs(x),abs(y)
+        
+        directions = [(2,1),(2,-1),(-2,1),(-2,-1),(1,2),(1,-2),(-1,2),(-1,-2)]
+        queue = deque([(0,0,0)])
+        visited = set([(0,0)])
+        
+        
+        
+        while queue:
+            curr_x,curr_y,steps = queue.popleft()
+            
+            if (curr_x,curr_y) == (x,y):
+                return steps
+            
+            for dx,dy in directions:
+                new_x = curr_x + dx
+                new_y = curr_y + dy
+                
+                if (new_x,new_y) not in visited:
+                    queue.append((new_x,new_y,steps + 1))
+                    visited.add((new_x,new_y))
+    
+    
+solution = Solution()
+print(solution.min_moves(5, 5)) 
