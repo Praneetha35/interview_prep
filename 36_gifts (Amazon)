@@ -1,0 +1,41 @@
+'''
+Problem Description:
+
+You are given a list of prices and an integer x. Your task is to find all unique pairs of prices from the list such that the sum of each pair is divisible by x. The result should be a list of tuples, where each tuple contains two prices from the list that satisfy the condition.
+
+Input:
+
+A list price of integers representing the prices.
+An integer x representing the divisor.
+An integer n representing the number of elements in the list.
+Output:
+
+A list of unique pairs (price[i], price[j]), where i < j, such that the sum of the prices at i and j is divisible by x.
+Example:
+
+price = [31, 25, 85, 29, 35]
+x = 60
+n = 5
+
+Output:
+
+[(31, 29), (25, 35), (85, 35)]
+'''
+
+
+
+price = [31,25,85,29,35]
+x = 60
+n = 5 
+
+res = set()
+
+
+for i in range(n):
+    for j in range(i + 1,n):
+           if (price[i] + price[j]) % x == 0:
+               res.add((price[i],price[j]))
+               
+
+
+print(list(res))
